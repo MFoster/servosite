@@ -12,7 +12,7 @@
 
 
 {% block javascript %}
-<script src="http://localhost:8081/socket.io/socket.io.js"></script>
+<script src="/js//socket.io.js"></script>
 <script src="/js/prototype.js"></script>
 
 {% endblock %}

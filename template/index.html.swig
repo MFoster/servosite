@@ -13,7 +13,7 @@
     {% parent %}
     
     <script type="text/javascript">
-        var socket = io.connect('http://localhost:8081');
+        var socket = io.connect('http://{{ host }}:{{ socketPort }}');
         
         
         $("angleInput").on('keypress', handleAngleInput);

@@ -1,7 +1,9 @@
 var express = require('express');
 var template = require('swig');
 var app = express();
-var io = require('socket.io').listen(8081);
+var socketPort = 8081
+
+var io = require('socket.io').listen(socketPort);
 
 io.sockets.on('connection', function (socket) {
 
@@ -39,7 +41,8 @@ function handleTwist(data){
 function handleIndex(req, res){
     
     var tmpl = template.compileFile('index.html.swig');
-    var html = tmpl.render({ title : "SWIG" });
+    console.log("hostname = " + req.host);
+    var html = tmpl.render({ title : "SWIG", socketPort : socketPort, host : req.host });
 
     res.send(html);
     
