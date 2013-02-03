@@ -20,7 +20,7 @@ app.get('/', handleIndex);
 
 app.use(express.static(__dirname + '/asset'));
 
-var appRoot = '/var/www/nodeground/servosite/';
+
 
 template.init({
   allowErrors: true,
@@ -28,7 +28,7 @@ template.init({
   cache: false,
   encoding: 'utf8',
   filters: {},
-  root: appRoot + 'template/'
+  root: __dirname + '/template/'
 });
 
 
