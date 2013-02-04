@@ -13,7 +13,10 @@ io.sockets.on('connection', function (socket) {
     
 });
 
-
+var SerialPort = require("serialport").SerialPort
+var serialPort = new SerialPort("/dev/ttyACM0", {
+    baudrate: 9600
+});
 
 
 app.get('/hello', handleHello);
@@ -35,8 +38,14 @@ template.init({
 
 
 function handleTwist(data){
-    console.log("Twist event received %o", data);
+   console.log("Twist event received %o", data);
+   serialPort.write(data.angle, serialPortWriteCallback);
 }
+
+function serialPortWriteCallback(err, result){
+	console.log("serial write callback err and results", err, result);
+}
+
 
 function handleIndex(req, res){
     
